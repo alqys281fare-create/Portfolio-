@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Gallery.css';
 import { Container } from 'react-bootstrap';
 import Particle from '../components/Particle';
@@ -6,7 +6,7 @@ import Particle from '../components/Particle';
 const Contact = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [categories, setCategories] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
 
@@ -17,27 +17,10 @@ const Contact = () => {
     );
     setGalleryImages(images);
     
-    // Extract unique categories
-    const uniqueCategories = ['all', ...new Set(images.map(img => img.category))];
+    // Extract unique categories, excluding 'uncategorized'
+    const uniqueCategories = [...new Set(images.map(img => img.category).filter(cat => cat !== 'uncategorized'))];
     setCategories(uniqueCategories);
   }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!isLightboxOpen) return;
-      
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowRight') {
-        navigateImage('next');
-      } else if (e.key === 'ArrowLeft') {
-        navigateImage('prev');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isLightboxOpen, selectedImage]);
 
   const importAll = (r) => {
     return r.keys().map((item, index) => {
@@ -59,23 +42,11 @@ const Contact = () => {
   };
 
   // Filter images based on selected category
-  const filteredImages = selectedCategory === 'all' 
+  const filteredImages = selectedCategory === '' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedCategory);
 
-  const openLightbox = (image) => {
-    setSelectedImage(image);
-    setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setSelectedImage(null);
-    setIsLightboxOpen(false);
-    document.body.style.overflow = 'unset';
-  };
-
-  const navigateImage = (direction) => {
+  const navigateImage = useCallback((direction) => {
     if (!selectedImage) return;
     
     const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
@@ -88,7 +59,36 @@ const Contact = () => {
     }
     
     setSelectedImage(filteredImages[newIndex]);
-  };
+  }, [selectedImage, filteredImages]);
+
+  const openLightbox = useCallback((image) => {
+    setSelectedImage(image);
+    setIsLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedImage(null);
+    setIsLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isLightboxOpen) return;
+      
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        navigateImage('next');
+      } else if (e.key === 'ArrowLeft') {
+        navigateImage('prev');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLightboxOpen, selectedImage, navigateImage, closeLightbox, openLightbox, filteredImages]);
 
   return (
     <Container fluid className="project-section">
