@@ -12,14 +12,12 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Resume = () => {
-  const [width, setWidth] = useState(1200);
   const [numPages, setNumPages] = useState(null);
   const [error, setError] = useState(null);
   const [containerWidth, setContainerWidth] = useState(800);
 
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth);
       // Adjust container width based on screen size
       if (window.innerWidth < 576) {
         setContainerWidth(300);
