@@ -5,8 +5,22 @@ import Particle from '../components/Particle';
 
 const Contact = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [categories, setCategories] = useState([]);
+  const [galleryImages, setGalleryImages] = useState([]);
+
+  useEffect(() => {
+    // Load images
+    const images = importAll(
+      require.context('/src/assets/myGallery', true, /\.(png|jpe?g|svg|gif|webp)$/)
+    );
+    setGalleryImages(images);
+    
+    // Extract unique categories
+    const uniqueCategories = ['all', ...new Set(images.map(img => img.category))];
+    setCategories(uniqueCategories);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -44,31 +58,23 @@ const Contact = () => {
     });
   };
 
-  const galleryImages = importAll(
-    require.context('/src/assets/myGallery', true, /\.(png|jpe?g|svg|gif|webp|png)$/)
-  );
-
-  // Get unique categories
-
-  const filteredImages = filter === 'all' 
+  // Filter images based on selected category
+  const filteredImages = selectedCategory === 'all' 
     ? galleryImages 
-    : galleryImages.filter(img => img.category === filter);
+    : galleryImages.filter(img => img.category === selectedCategory);
 
-  // Open lightbox
   const openLightbox = (image) => {
     setSelectedImage(image);
     setIsLightboxOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   };
 
-  // Close lightbox
   const closeLightbox = () => {
     setSelectedImage(null);
     setIsLightboxOpen(false);
-    document.body.style.overflow = 'unset'; // Restore scrolling
+    document.body.style.overflow = 'unset';
   };
 
-  // Navigate through images
   const navigateImage = (direction) => {
     if (!selectedImage) return;
     
@@ -90,7 +96,20 @@ const Contact = () => {
       <Container>
         <h1 className="gallery-title">My Gallery</h1>
         
-        
+        {/* Category Filter Buttons */}
+        {categories.length > 0 && (
+          <div className="category-filters">
+            {categories.map(category => (
+              <button
+                key={category}
+                className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Image Grid */}
         {filteredImages.length > 0 ? (
