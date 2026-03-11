@@ -9,7 +9,6 @@ import pg4 from "../assets/projects/p4.png";
 import pg5 from "../assets/projects/p5.png";
 import pg6 from "../assets/projects/p6.png";
 import pg7 from "../assets/projects/p7.png";
-import { SiMaterialdesign } from "react-icons/si";
 const Projects = () => {
   return (
     <Container fluid className="project-section">

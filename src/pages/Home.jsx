@@ -4,7 +4,6 @@ import homeLogo from '../assets/myPhoto.png'
 import Particle from '../components/Particle';
 import About from '../components/Home/About';
 import Type from '../components/Home/Type';
-import { SiMaterialdesign } from "react-icons/si";
 const Home = () => {
   return (
     <section>
