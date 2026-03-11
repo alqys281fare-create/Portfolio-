@@ -1,5 +1,4 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import { Row } from "react-bootstrap";
 import imgHacker from "../../assets/scoreRank.png";
 

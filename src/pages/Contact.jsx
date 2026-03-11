@@ -5,7 +5,7 @@ import Particle from '../components/Particle';
 
 const Contact = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [filter, setFilter] = useState('all');
+
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
@@ -49,7 +49,6 @@ const Contact = () => {
   );
 
   // Get unique categories
-  const categories = ['all', ...new Set(galleryImages.map(img => img.category))];
 
   const filteredImages = filter === 'all' 
     ? galleryImages 
