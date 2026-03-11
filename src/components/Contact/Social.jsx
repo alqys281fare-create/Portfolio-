@@ -4,6 +4,7 @@ import {
   AiFillGithub,
   AiOutlineTwitter
 } from "react-icons/ai";
+import { SiMaterialui } from 'react-icons/si';
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import './Social.css'
