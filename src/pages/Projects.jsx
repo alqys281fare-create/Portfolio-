@@ -109,6 +109,17 @@ const Projects = () => {
               ghLink="https://github.com/mohammedragabali5-blip/Ecommerce-Project"
             />
           </Col>
+          
+          <Col xl ={4} md={6} sm={6} className="project-card">
+            <ProjectCard
+              imgPath={pg7}
+              isBlog={false}
+              title="E-commerce"
+              description="This project is a RESTful e-commerce API built with Laravel, using Laravel Sanctum for authentication, Spatie Media Library for product image management, and Spatie Translatable to support Arabic and English content. The API provides core features including user authentication, product listing with multilingual data, cart management, and order creation from cart items with automatic checkout processing"
+              ghLink="https://github.com/mohammedragabali5-blip/Ecommerce-Project"
+            />
+          </Col>
+          
 
           
 
