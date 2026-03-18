@@ -117,6 +117,7 @@ const Projects = () => {
               isBlog={false}
               title="Malaria Detection Using CNN"
               description="A Convolutional Neural Network (CNN) model that classifies blood cell images as infected or uninfected with malaria, enabling faster and automated diagnosis."
+               ghLink="https://github.com/alqys281fare-create/Malaria-CNN/blob/main/MalariaCNN.ipynb"
             />
           </Col>
           
