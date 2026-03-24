@@ -124,7 +124,7 @@ const Projects = () => {
 
           <Col xl={4} md={6} sm={6} className="project-card">
             <ProjectCard
-              imgPath={pg}
+              imgPath={pg9}
               isBlog={false}
               title="U_Net-For-Breast-Cancer-Segmentation"
               description={`This project develops a deep learning model for multi-class segmentation of breast ultrasound images into normal, benign, and malignant regions. Images are preprocessed and augmented to improve model robustness and generalization.
