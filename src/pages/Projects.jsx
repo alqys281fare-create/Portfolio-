@@ -10,6 +10,7 @@ import pg5 from "../assets/projects/p5.png";
 import pg6 from "../assets/projects/p6.png";
 import pg7 from "../assets/projects/p7.png";
 import pg8 from "../assets/projects/p8.png";
+import pg9 from "../assets/projects/p9.png";
 const Projects = () => {
   return (
     <Container fluid className="project-section">
@@ -118,6 +119,18 @@ const Projects = () => {
               title="Malaria Detection Using CNN"
               description="A Convolutional Neural Network (CNN) model that classifies blood cell images as infected or uninfected with malaria, enabling faster and automated diagnosis."
                ghLink="https://github.com/alqys281fare-create/Malaria-CNN/blob/main/MalariaCNN.ipynb"
+            />
+          </Col>
+
+          <Col xl ={4} md={6} sm={6} className="project-card">
+            <ProjectCard
+              imgPath={pg*}
+              isBlog={false}
+              title="U_Net-For-Breast-Cancer-Segmentation"
+              description="This project develops a deep learning model for multi-class segmentation of breast ultrasound images into normal, benign, and malignant regions. Images are preprocessed and augmented to improve model robustness and generalization.
+              An improved U-Net architecture with batch normalization and dropout is used to accurately capture spatial features.
+              The model is trained using the Adam optimizer and evaluated using metrics such as Dice score and Mean IoU. The system can predict and visualize segmentation masks, helping analyze results and support medical diagnosis.."
+               ghLink="https://github.com/alqys281fare-create/U_Net-For-Breast-Cancer-Segmentation/blob/main/notebook36ad57c864.ipynb"
             />
           </Col>
           
