@@ -122,15 +122,17 @@ const Projects = () => {
             />
           </Col>
 
-          <Col xl ={4} md={6} sm={6} className="project-card">
+          <Col xl={4} md={6} sm={6} className="project-card">
             <ProjectCard
-              imgPath={pg*}
+              imgPath={pg}
               isBlog={false}
               title="U_Net-For-Breast-Cancer-Segmentation"
-              description="This project develops a deep learning model for multi-class segmentation of breast ultrasound images into normal, benign, and malignant regions. Images are preprocessed and augmented to improve model robustness and generalization.
-              An improved U-Net architecture with batch normalization and dropout is used to accurately capture spatial features.
-              The model is trained using the Adam optimizer and evaluated using metrics such as Dice score and Mean IoU. The system can predict and visualize segmentation masks, helping analyze results and support medical diagnosis.."
-               ghLink="https://github.com/alqys281fare-create/U_Net-For-Breast-Cancer-Segmentation/blob/main/notebook36ad57c864.ipynb"
+              description={`This project develops a deep learning model for multi-class segmentation of breast ultrasound images into normal, benign, and malignant regions. Images are preprocessed and augmented to improve model robustness and generalization.
+          
+          An improved U-Net architecture with batch normalization and dropout is used to accurately capture spatial features.
+          
+          The model is trained using the Adam optimizer and evaluated using metrics such as Dice score and Mean IoU. The system can predict and visualize segmentation masks, helping analyze results and support medical diagnosis.`}
+              ghLink="https://github.com/alqys281fare-create/U_Net-For-Breast-Cancer-Segmentation/blob/main/notebook36ad57c864.ipynb"
             />
           </Col>
           
