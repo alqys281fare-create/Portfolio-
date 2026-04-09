@@ -11,6 +11,7 @@ import pg6 from "../assets/projects/p6.png";
 import pg7 from "../assets/projects/p7.png";
 import pg8 from "../assets/projects/p8.png";
 import pg9 from "../assets/projects/p9.png";
+import pg12 from "../assets/projects/p12.png";
 const Projects = () => {
   return (
     <Container fluid className="project-section">
@@ -133,6 +134,19 @@ const Projects = () => {
           
           The model is trained using the Adam optimizer and evaluated using metrics such as Dice score and Mean IoU. The system can predict and visualize segmentation masks, helping analyze results and support medical diagnosis.`}
               ghLink="https://github.com/alqys281fare-create/U_Net-For-Breast-Cancer-Segmentation/blob/main/notebook36ad57c864.ipynb"
+            />
+          </Col>
+
+           <Col xl={4} md={6} sm={6} className="project-card">
+            <ProjectCard
+              imgPath={pg12}
+              isBlog={false}
+              title="Custom U_Net For Tumor Brain Segmentation"
+              description={`This project focuses on developing a deep learning model for brain tumor segmentation from 2D CT/MRI scans. The dataset is carefully preprocessed and enhanced using advanced data augmentation techniques to improve generalization and robustness.
+              A customized U-Net architecture is implemented, incorporating Batch Normalization and Dropout layers to enhance feature extraction and reduce overfitting.
+              The model is trained using the Adam optimizer and evaluated with segmentation metrics such as Dice Coefficient and Mean IoU to ensure high performance.
+              The system is capable of generating accurate segmentation masks, enabling clear visualization of tumor regions and supporting medical image analysis.`}
+              ghLink="https://github.com/alqys281fare-create/U_Net-For-Brain-Tumor-Segmentation/blob/main/BrainTumor_CAR_Attentication_U_Net.ipynb"
             />
           </Col>
           
